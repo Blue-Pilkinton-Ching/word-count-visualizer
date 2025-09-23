@@ -132,6 +132,6 @@
 
 	<!-- Preview Area -->
 	<section class="lg:col-span-8" role="main" aria-label="Document preview">
-		<DocumentPreview {displayText} {fontFamily} {fontSize} {lineSpacing} />
+		<DocumentPreview {displayText} {fontFamily} {fontSize} {lineSpacing} {isRTL} />
 	</section>
 </div>
