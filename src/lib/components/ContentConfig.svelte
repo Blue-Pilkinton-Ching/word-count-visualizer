@@ -20,6 +20,7 @@
 	}>();
 
 	let showAdvancedSettings = $state(false);
+	let isExpanded = $state(true);
 
 	const languageOptions = [
 		{ value: 'lorem', label: 'Lorem Ipsum', placeholder: 'Type your text here...' },
@@ -37,47 +38,60 @@
 </script>
 
 <div class="rounded-lg bg-white p-6 shadow-sm">
-	<h2 class="mb-4 flex items-center text-lg font-semibold">
-		<FileText class="mr-2 h-5 w-5" />
-		Content
-	</h2>
-
-	<div class="space-y-4">
-		<!-- Language Selector -->
-		<div>
-			<label for="language" class="mb-2 block text-sm font-medium text-gray-700">
-				<Globe class="mr-1 inline h-4 w-4" />
-				Language
-			</label>
-			<select
-				id="language"
-				bind:value={language}
-				class="w-full rounded-md border border-gray-300 px-3 py-2"
-			>
-				{#each languageOptions as lang (lang.value)}
-					<option value={lang.value}>{lang.label}</option>
-				{/each}
-			</select>
+	<button
+		onclick={() => (isExpanded = !isExpanded)}
+		class="{isExpanded
+			? 'mb-4'
+			: ''} flex w-full items-center justify-between text-lg font-semibold hover:text-gray-700"
+	>
+		<div class="flex items-center">
+			<FileText class="mr-2 h-5 w-5" />
+			Content
 		</div>
+		{#if isExpanded}
+			<ChevronUp class="h-5 w-5" />
+		{:else}
+			<ChevronDown class="h-5 w-5" />
+		{/if}
+	</button>
 
-		<!-- Word Count Input -->
-		<div>
-			<label for="wordCount" class="mb-2 block text-sm font-medium text-gray-700">
-				Number of Words
-			</label>
-			<input
-				id="wordCount"
-				type="number"
-				bind:value={wordCountInput}
-				min="1"
-				max="10000"
-				class="w-full rounded-md border border-gray-300 px-3 py-2"
-				disabled={useCustomText}
-			/>
-		</div>
+	{#if isExpanded}
+		<div class="space-y-4">
+			<!-- Language Selector -->
+			<div>
+				<label for="language" class="mb-2 block text-sm font-medium text-gray-700">
+					<Globe class="mr-1 inline h-4 w-4" />
+					Language
+				</label>
+				<select
+					id="language"
+					bind:value={language}
+					class="w-full rounded-md border border-gray-300 px-3 py-2"
+				>
+					{#each languageOptions as lang (lang.value)}
+						<option value={lang.value}>{lang.label}</option>
+					{/each}
+				</select>
+			</div>
 
-		<!-- Advanced Settings -->
-		<div class="border-t pt-4">
+			<!-- Word Count Input -->
+			<div>
+				<label for="wordCount" class="mb-2 block text-sm font-medium text-gray-700">
+					Number of Words
+				</label>
+				<input
+					id="wordCount"
+					type="number"
+					bind:value={wordCountInput}
+					min="1"
+					max="10000"
+					class="w-full rounded-md border border-gray-300 px-3 py-2"
+					disabled={useCustomText}
+				/>
+			</div>
+
+			<!-- Advanced Settings -->
+			<div class="border-t pt-4">
 				<button
 					onclick={() => (showAdvancedSettings = !showAdvancedSettings)}
 					class="flex w-full items-center justify-between text-sm font-medium text-gray-700 hover:text-gray-900"
@@ -167,5 +181,6 @@
 					</div>
 				{/if}
 			</div>
-	</div>
+		</div>
+	{/if}
 </div>
