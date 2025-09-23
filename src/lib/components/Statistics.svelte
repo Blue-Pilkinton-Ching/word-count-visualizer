@@ -1,28 +1,23 @@
 <script lang="ts">
 	import { BarChart3, ChevronDown, ChevronUp } from 'lucide-svelte';
 
-	let { displayText, actualWordCount, sentences, paragraphs, avgWordsPerSentence } = $props<{
+	let {
+		displayText,
+		actualWordCount,
+		sentences,
+		paragraphs,
+		avgWordsPerSentence,
+		avgWordsPerParagraph
+	} = $props<{
 		displayText: string;
 		actualWordCount: number;
 		sentences: number;
 		paragraphs: number;
 		avgWordsPerSentence: number;
+		avgWordsPerParagraph: number;
 	}>();
 
 	let isExpanded = $state(false);
-
-	function getReadabilityScore(text: string): string {
-		const sentenceCount = text.split(/[.!?]+/).filter((s) => s.trim().length > 0).length;
-		const words = text
-			.trim()
-			.split(/\s+/)
-			.filter((word) => word.length > 0).length;
-		if (sentenceCount === 0) return 'N/A';
-		const avgWordsPerSentence = words / sentenceCount;
-		if (avgWordsPerSentence <= 15) return 'Easy';
-		if (avgWordsPerSentence <= 20) return 'Moderate';
-		return 'Complex';
-	}
 </script>
 
 <div class="rounded-lg bg-white p-6 shadow-sm">
@@ -75,12 +70,12 @@
 					<span class="font-medium text-gray-900">{avgWordsPerSentence}</span>
 				</div>
 				<div class="flex justify-between">
-					<span class="text-gray-700">Reading Time:</span>
-					<span class="font-medium text-gray-900">{Math.ceil(actualWordCount / 200)} min</span>
+					<span class="text-gray-700">Avg words/paragraph:</span>
+					<span class="font-medium text-gray-900">{avgWordsPerParagraph}</span>
 				</div>
 				<div class="flex justify-between">
-					<span class="text-gray-700">Readability:</span>
-					<span class="font-medium text-gray-900">{getReadabilityScore(displayText)}</span>
+					<span class="text-gray-700">Reading Time:</span>
+					<span class="font-medium text-gray-900">{Math.ceil(actualWordCount / 200)} min</span>
 				</div>
 			</div>
 		</div>

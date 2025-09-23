@@ -49,6 +49,9 @@
 	const avgWordsPerSentence = $derived(
 		sentences > 0 ? Math.round((actualWordCount / sentences) * 10) / 10 : 0
 	);
+	const avgWordsPerParagraph = $derived(
+		paragraphs > 0 ? Math.round((actualWordCount / paragraphs) * 10) / 10 : 0
+	);
 </script>
 
 <svelte:head>
@@ -93,7 +96,7 @@
 
 		<PageConfig {displayText} />
 
-		<Statistics {displayText} {actualWordCount} {sentences} {paragraphs} {avgWordsPerSentence} />
+		<Statistics {displayText} {actualWordCount} {sentences} {paragraphs} {avgWordsPerSentence} {avgWordsPerParagraph} />
 	</div>
 
 	<!-- Preview Area -->
