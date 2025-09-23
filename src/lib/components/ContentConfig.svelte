@@ -82,7 +82,7 @@
 				<select
 					id="language"
 					bind:value={language}
-					class="w-full rounded-md border border-gray-300 px-3 py-2"
+					class="h-11 w-full rounded-md border border-gray-300 px-3 py-2"
 				>
 					{#each languageOptions as lang (lang.value)}
 						<option value={lang.value}>{lang.label}</option>
@@ -101,7 +101,7 @@
 					bind:value={wordCountInput}
 					min="1"
 					max="10000"
-					class="w-full rounded-md border border-gray-300 px-3 py-2"
+					class="h-11 w-full rounded-md border border-gray-300 px-3 py-2"
 					disabled={useCustomText}
 				/>
 			</div>
