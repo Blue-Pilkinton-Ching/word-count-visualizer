@@ -1,1 +1,7 @@
 @import 'tailwindcss';
+
+/* RTL support for Arabic and Hebrew text content */
+#document-content[dir="rtl"] {
+	text-align: right;
+	direction: rtl;
+}

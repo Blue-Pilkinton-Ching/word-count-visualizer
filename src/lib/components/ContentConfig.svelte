@@ -57,6 +57,8 @@
 		class="{isExpanded
 			? 'mb-4'
 			: ''} flex w-full items-center justify-between text-lg font-semibold hover:text-gray-700"
+		aria-expanded={isExpanded}
+		aria-controls="content-config-panel"
 	>
 		<div class="flex items-center">
 			<FileText class="mr-2 h-5 w-5" />
@@ -70,7 +72,7 @@
 	</button>
 
 	{#if isExpanded}
-		<div class="space-y-4">
+		<div class="space-y-4" id="content-config-panel">
 			<!-- Language Selector -->
 			<div>
 				<label for="language" class="mb-2 block text-sm font-medium text-gray-700">

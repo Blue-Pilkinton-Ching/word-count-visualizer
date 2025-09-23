@@ -52,6 +52,10 @@
 	const avgWordsPerParagraph = $derived(
 		paragraphs > 0 ? Math.round((actualWordCount / paragraphs) * 10) / 10 : 0
 	);
+
+	// RTL languages detection
+	const rtlLanguages = ['ar', 'he'];
+	const isRTL = $derived(rtlLanguages.includes(language));
 </script>
 
 <svelte:head>
@@ -76,12 +80,32 @@
 		name="twitter:description"
 		content="Visualize document length with our free word count calculator."
 	/>
+	<meta
+		name="robots"
+		content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1"
+	/>
 	<link rel="canonical" href="https://wordcountvisualizer.com" />
 </svelte:head>
 
-<div class="grid gap-6 lg:grid-cols-12">
+<div class="grid gap-6 lg:grid-cols-12" itemscope itemtype="https://schema.org/WebApplication">
+	<script type="application/ld+json">
+		{
+			"@context": "https://schema.org",
+			"@type": "WebApplication",
+			"name": "Word Count Visualizer",
+			"description": "Instantly visualize how many pages your words will fill. Adjust fonts, spacing, and margins to see exactly how your document will look.",
+			"url": "https://wordcountvisualizer.com",
+			"applicationCategory": "UtilityApplication",
+			"operatingSystem": "Web Browser",
+			"offers": {
+				"@type": "Offer",
+				"price": "0",
+				"priceCurrency": "USD"
+			}
+		}
+	</script>
 	<!-- Controls Panel -->
-	<div class="space-y-6 lg:col-span-4">
+	<aside class="space-y-6 lg:col-span-4" aria-label="Document configuration controls">
 		<ContentConfig
 			bind:useCustomText
 			bind:wordCountInput
@@ -104,8 +128,10 @@
 			{avgWordsPerSentence}
 			{avgWordsPerParagraph}
 		/>
-	</div>
+	</aside>
 
 	<!-- Preview Area -->
-	<DocumentPreview {displayText} {fontFamily} {fontSize} {lineSpacing} />
+	<section class="lg:col-span-8" role="main" aria-label="Document preview">
+		<DocumentPreview {displayText} {fontFamily} {fontSize} {lineSpacing} />
+	</section>
 </div>

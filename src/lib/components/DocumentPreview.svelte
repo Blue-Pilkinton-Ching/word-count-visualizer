@@ -1,11 +1,12 @@
 <script lang="ts">
 	import { Eye } from 'lucide-svelte';
 
-	let { displayText, fontFamily, fontSize, lineSpacing, margins } = $props<{
+	let { displayText, fontFamily, fontSize, lineSpacing, isRTL = false } = $props<{
 		displayText: string;
 		fontFamily: string;
 		fontSize: number;
 		lineSpacing: number;
+		isRTL?: boolean;
 	}>();
 
 	function printDocument(): void {
@@ -30,12 +31,14 @@
 				<div
 					id="document-content"
 					class="prose max-w-none break-words"
+					dir={isRTL ? 'rtl' : 'ltr'}
 					style="
 							font-family: '{fontFamily}', sans-serif;
 							font-size: {fontSize}pt;
 							line-height: {lineSpacing};
 							color: black;
 							background: white;
+							text-align: {isRTL ? 'right' : 'left'};
 						"
 				>
 					<p class="whitespace-pre-wrap">{displayText}</p>

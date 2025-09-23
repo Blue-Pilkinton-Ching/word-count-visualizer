@@ -4,7 +4,7 @@
 	let { children } = $props();
 </script>
 
-<div class="min-h-screen bg-gray-50">
+<div class="min-h-screen bg-gray-50" lang="en" dir="ltr">
 	<header class="border-b bg-white">
 		<div class="container mx-auto flex h-16 items-center justify-between px-4">
 			<div class="flex items-center space-x-2">
