@@ -7,6 +7,7 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 This is a **SvelteKit 5** application with **TypeScript** and **TailwindCSS v4**.
 
 Key technologies:
+
 - **SvelteKit 5** with the new runes-based reactivity system
 - **TypeScript** for type safety
 - **TailwindCSS v4** (with Vite plugin) for styling
@@ -40,6 +41,7 @@ pnpm format    # Format code with prettier
 ## Architecture
 
 ### Project Structure
+
 - **`src/routes/`** - SvelteKit file-based routing
 - **`src/lib/`** - Reusable components and utilities (accessible via `$lib` alias)
 - **`src/app.css`** - Global styles with TailwindCSS import
@@ -47,6 +49,7 @@ pnpm format    # Format code with prettier
 - **`static/`** - Static assets
 
 ### Current Implementation
+
 - Minimal layout in `src/routes/+layout.svelte` with basic header
 - Empty main page at `src/routes/+page.svelte`
 - Project appears to be in early development stage
@@ -54,16 +57,19 @@ pnpm format    # Format code with prettier
 ## Configuration Details
 
 ### Code Style
+
 - **Prettier**: Uses tabs, single quotes, no trailing commas, 100 char width
 - **ESLint**: TypeScript + Svelte rules with prettier integration
 - Formatted code should follow the prettier configuration in `.prettierrc`
 
 ### SvelteKit Config
+
 - Uses `@sveltejs/adapter-auto` for deployment
 - Vite preprocessing enabled
 - Standard SvelteKit 5 setup
 
 ### Build Tools
+
 - **Vite** with SvelteKit and TailwindCSS plugins
 - **TypeScript** configuration extends SvelteKit defaults
 - **pnpm** for package management with esbuild optimization

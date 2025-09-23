@@ -1,0 +1,497 @@
+const sampleTexts = {
+	lorem: [
+		'Lorem',
+		'ipsum',
+		'dolor',
+		'sit',
+		'amet',
+		'consectetur',
+		'adipiscing',
+		'elit',
+		'sed',
+		'do',
+		'eiusmod',
+		'tempor',
+		'incididunt',
+		'ut',
+		'labore',
+		'et',
+		'dolore',
+		'magna',
+		'aliqua',
+		'Ut',
+		'enim',
+		'ad',
+		'minim',
+		'veniam',
+		'quis',
+		'nostrud',
+		'exercitation',
+		'ullamco',
+		'laboris',
+		'nisi',
+		'aliquip',
+		'ex',
+		'ea',
+		'commodo',
+		'consequat',
+		'Duis',
+		'aute',
+		'irure',
+		'in',
+		'reprehenderit',
+		'voluptate',
+		'velit',
+		'esse',
+		'cillum',
+		'fugiat',
+		'nulla',
+		'pariatur',
+		'Excepteur',
+		'sint',
+		'occaecat',
+		'cupidatat',
+		'non',
+		'proident',
+		'sunt',
+		'culpa',
+		'qui',
+		'officia',
+		'deserunt',
+		'mollit',
+		'anim',
+		'id',
+		'est',
+		'laborum'
+	],
+	en: [
+		'The',
+		'quick',
+		'brown',
+		'fox',
+		'jumps',
+		'over',
+		'the',
+		'lazy',
+		'dog',
+		'in',
+		'autumn',
+		'when',
+		'leaves',
+		'fall',
+		'gently',
+		'to',
+		'ground',
+		'creating',
+		'beautiful',
+		'patterns',
+		'across',
+		'landscape',
+		'while',
+		'birds',
+		'migrate',
+		'south',
+		'for',
+		'winter',
+		'months',
+		'ahead',
+		'bringing',
+		'change',
+		'seasons',
+		'nature',
+		'cycles',
+		'through',
+		'eternal',
+		'rhythm',
+		'life',
+		'continues',
+		'flowing',
+		'like',
+		'river',
+		'through',
+		'valleys',
+		'mountains',
+		'reaching',
+		'ocean',
+		'where',
+		'waves',
+		'meet',
+		'shore',
+		'endlessly',
+		'repeating',
+		'ancient',
+		'dance',
+		'between',
+		'land',
+		'sea',
+		'under',
+		'vast',
+		'sky'
+	],
+	es: [
+		'El',
+		'texto',
+		'de',
+		'prueba',
+		'es',
+		'una',
+		'herramienta',
+		'útil',
+		'para',
+		'desarrolladores',
+		'diseñadores',
+		'escritores',
+		'que',
+		'necesitan',
+		'contenido',
+		'temporal',
+		'Sus',
+		'palabras',
+		'permiten',
+		'visualizar',
+		'cómo',
+		'se',
+		'verá',
+		'documento',
+		'final',
+		'sin',
+		'distraerse',
+		'con',
+		'el',
+		'contenido',
+		'real',
+		'Esta',
+		'práctica',
+		'común',
+		'en',
+		'la',
+		'industria',
+		'ayuda',
+		'a',
+		'enfocar',
+		'atención',
+		'formato',
+		'diseño',
+		'lugar',
+		'del',
+		'texto',
+		'específico',
+		'Muchos',
+		'profesionales',
+		'utilizan',
+		'este',
+		'método',
+		'crear',
+		'prototipos'
+	],
+	fr: [
+		'Le',
+		'texte',
+		'de',
+		'remplissage',
+		'est',
+		'un',
+		'outil',
+		'précieux',
+		'pour',
+		'les',
+		'développeurs',
+		'concepteurs',
+		'rédacteurs',
+		'qui',
+		'ont',
+		'besoin',
+		'contenu',
+		'temporaire',
+		'Ses',
+		'mots',
+		'permettent',
+		'visualiser',
+		'comment',
+		'document',
+		'final',
+		'apparaîtra',
+		'sans',
+		'se',
+		'laisser',
+		'distraire',
+		'par',
+		'le',
+		'contenu',
+		'réel',
+		'Cette',
+		'pratique',
+		'courante',
+		'dans',
+		'industrie',
+		'aide',
+		'concentrer',
+		'attention',
+		'sur',
+		'format',
+		'et',
+		'conception',
+		'plutôt',
+		'que',
+		'texte',
+		'spécifique',
+		'Beaucoup',
+		'professionnels',
+		'utilisent'
+	],
+	de: [
+		'Der',
+		'Fülltext',
+		'ist',
+		'ein',
+		'wertvolles',
+		'Werkzeug',
+		'für',
+		'Entwickler',
+		'Designer',
+		'und',
+		'Autoren',
+		'die',
+		'temporären',
+		'Inhalt',
+		'benötigen',
+		'Seine',
+		'Wörter',
+		'ermöglichen',
+		'es',
+		'zu',
+		'visualisieren',
+		'wie',
+		'das',
+		'endgültige',
+		'Dokument',
+		'aussehen',
+		'wird',
+		'ohne',
+		'sich',
+		'vom',
+		'tatsächlichen',
+		'Inhalt',
+		'ablenken',
+		'lassen',
+		'Diese',
+		'gängige',
+		'Praxis',
+		'in',
+		'der',
+		'Branche',
+		'hilft',
+		'dabei',
+		'die',
+		'Aufmerksamkeit',
+		'auf',
+		'Format',
+		'Design',
+		'zu',
+		'richten',
+		'anstatt',
+		'auf',
+		'den',
+		'spezifischen',
+		'Text',
+		'Viele'
+	],
+	it: [
+		'Il',
+		'testo',
+		'di',
+		'riempimento',
+		'è',
+		'uno',
+		'strumento',
+		'prezioso',
+		'per',
+		'sviluppatori',
+		'designer',
+		'scrittori',
+		'che',
+		'hanno',
+		'bisogno',
+		'di',
+		'contenuto',
+		'temporaneo',
+		'Le',
+		'sue',
+		'parole',
+		'permettono',
+		'visualizzare',
+		'come',
+		'apparirà',
+		'il',
+		'documento',
+		'finale',
+		'senza',
+		'essere',
+		'distratti',
+		'dal',
+		'contenuto',
+		'reale',
+		'Questa',
+		'pratica',
+		'comune',
+		'nel',
+		'settore',
+		'aiuta',
+		'concentrare',
+		'attenzione',
+		'sul',
+		'formato',
+		'design',
+		'piuttosto',
+		'che',
+		'su',
+		'testo',
+		'specifico',
+		'Molti',
+		'professionisti',
+		'utilizzano',
+		'questo'
+	],
+	pt: [
+		'O',
+		'texto',
+		'de',
+		'preenchimento',
+		'é',
+		'uma',
+		'ferramenta',
+		'valiosa',
+		'para',
+		'desenvolvedores',
+		'designers',
+		'escritores',
+		'que',
+		'precisam',
+		'de',
+		'conteúdo',
+		'temporário',
+		'Suas',
+		'palavras',
+		'permitem',
+		'visualizar',
+		'como',
+		'será',
+		'documento',
+		'final',
+		'sem',
+		'se',
+		'distrair',
+		'com',
+		'conteúdo',
+		'real',
+		'Esta',
+		'prática',
+		'comum',
+		'na',
+		'indústria',
+		'ajuda',
+		'focar',
+		'atenção',
+		'no',
+		'formato',
+		'design',
+		'em',
+		'vez',
+		'do',
+		'texto',
+		'específico',
+		'Muitos',
+		'profissionais',
+		'usam',
+		'este',
+		'método',
+		'para',
+		'criar',
+		'protótipos'
+	]
+};
+
+export interface TextGenerationOptions {
+	includePunctuation: boolean;
+	averageSentenceLength: number;
+	paragraphLength: number;
+}
+
+export function generateSampleText(
+	wordCount: number,
+	language: string = 'lorem',
+	options: TextGenerationOptions = {
+		includePunctuation: true,
+		averageSentenceLength: 12,
+		paragraphLength: 80
+	}
+): string {
+	const words = sampleTexts[language as keyof typeof sampleTexts] || sampleTexts.lorem;
+
+	let text = '';
+
+	if (!options.includePunctuation) {
+		// Simple text without punctuation or paragraphs
+		for (let i = 0; i < wordCount; i++) {
+			text += words[i % words.length];
+			if (i < wordCount - 1) text += ' ';
+		}
+		return text;
+	}
+
+	// Generate text with punctuation and paragraphs
+	let currentSentenceLength = 0;
+	const sentenceVariation = Math.max(3, Math.floor(options.averageSentenceLength * 0.3));
+	let sentenceIndex = 0;
+	let wordsInCurrentParagraph = 0;
+
+	// Generate varied sentence lengths around the average
+	const getSentenceLength = (index: number) => {
+		const variation = (index % 5) - 2; // -2, -1, 0, 1, 2
+		return Math.max(5, options.averageSentenceLength + (variation * sentenceVariation) / 2);
+	};
+
+	for (let i = 0; i < wordCount; i++) {
+		const word = words[i % words.length];
+
+		// Capitalize first word of sentence
+		if (currentSentenceLength === 0) {
+			text += word.charAt(0).toUpperCase() + word.slice(1);
+		} else {
+			text += word;
+		}
+
+		currentSentenceLength++;
+		wordsInCurrentParagraph++;
+
+		// Check if we should end the sentence
+		const targetSentenceLength = getSentenceLength(sentenceIndex);
+		const isLastWord = i === wordCount - 1;
+		const shouldEndSentence = currentSentenceLength >= targetSentenceLength || isLastWord;
+
+		if (shouldEndSentence) {
+			text += '.';
+			currentSentenceLength = 0;
+			sentenceIndex++;
+
+			// Check if we should start a new paragraph
+			if (wordsInCurrentParagraph >= options.paragraphLength && !isLastWord) {
+				text += '\n\n';
+				wordsInCurrentParagraph = 0;
+			} else if (!isLastWord) {
+				text += ' ';
+			}
+		} else if (i < wordCount - 1) {
+			text += ' ';
+		}
+	}
+
+	return text;
+}
+
+export function countWords(text: string): number {
+	return text
+		.trim()
+		.split(/\s+/)
+		.filter((word) => word.length > 0).length;
+}
