@@ -60,55 +60,24 @@
 			</select>
 		</div>
 
-		<!-- Input Method -->
+		<!-- Word Count Input -->
 		<div>
-			<fieldset>
-				<legend class="mb-2 block text-sm font-medium text-gray-700"> Input Method </legend>
-				<div class="space-y-2">
-					<label class="flex items-center">
-						<input type="radio" bind:group={useCustomText} value={false} class="mr-2" />
-						<span>Word Count</span>
-					</label>
-					<label class="flex items-center">
-						<input type="radio" bind:group={useCustomText} value={true} class="mr-2" />
-						<span>Custom Text</span>
-					</label>
-				</div>
-			</fieldset>
+			<label for="wordCount" class="mb-2 block text-sm font-medium text-gray-700">
+				Number of Words
+			</label>
+			<input
+				id="wordCount"
+				type="number"
+				bind:value={wordCountInput}
+				min="1"
+				max="10000"
+				class="w-full rounded-md border border-gray-300 px-3 py-2"
+				disabled={useCustomText}
+			/>
 		</div>
 
-		{#if !useCustomText}
-			<div>
-				<label for="wordCount" class="mb-2 block text-sm font-medium text-gray-700">
-					Number of Words
-				</label>
-				<input
-					id="wordCount"
-					type="number"
-					bind:value={wordCountInput}
-					min="1"
-					max="10000"
-					class="w-full rounded-md border border-gray-300 px-3 py-2"
-				/>
-			</div>
-		{:else}
-			<div>
-				<label for="customText" class="mb-2 block text-sm font-medium text-gray-700">
-					Your Text
-				</label>
-				<textarea
-					id="customText"
-					bind:value={customText}
-					placeholder={currentLanguage.placeholder}
-					rows="4"
-					class="w-full rounded-md border border-gray-300 px-3 py-2"
-				></textarea>
-			</div>
-		{/if}
-
 		<!-- Advanced Settings -->
-		{#if !useCustomText}
-			<div class="border-t pt-4">
+		<div class="border-t pt-4">
 				<button
 					onclick={() => (showAdvancedSettings = !showAdvancedSettings)}
 					class="flex w-full items-center justify-between text-sm font-medium text-gray-700 hover:text-gray-900"
@@ -126,14 +95,37 @@
 
 				{#if showAdvancedSettings}
 					<div class="mt-4 space-y-4 rounded-md bg-gray-50 p-4">
+						<!-- Custom Text Option -->
 						<div>
 							<label class="flex items-center">
-								<input type="checkbox" bind:checked={includePunctuation} class="mr-2" />
-								<span class="text-sm">Include punctuation and paragraphs</span>
+								<input type="checkbox" bind:checked={useCustomText} class="mr-2" />
+								<span class="text-sm">Use custom text instead of generated content</span>
 							</label>
 						</div>
 
-						{#if includePunctuation}
+						{#if useCustomText}
+							<div>
+								<label for="customText" class="mb-2 block text-sm font-medium text-gray-700">
+									Your Text
+								</label>
+								<textarea
+									id="customText"
+									bind:value={customText}
+									placeholder={currentLanguage.placeholder}
+									rows="4"
+									class="w-full rounded-md border border-gray-300 px-3 py-2"
+								></textarea>
+							</div>
+						{:else}
+							<div>
+								<label class="flex items-center">
+									<input type="checkbox" bind:checked={includePunctuation} class="mr-2" />
+									<span class="text-sm">Include punctuation and paragraphs</span>
+								</label>
+							</div>
+						{/if}
+
+						{#if includePunctuation && !useCustomText}
 							<div>
 								<label for="sentenceLength" class="mb-2 block text-sm font-medium text-gray-700">
 									Average Sentence Length ({averageSentenceLength} words)
@@ -175,6 +167,5 @@
 					</div>
 				{/if}
 			</div>
-		{/if}
 	</div>
 </div>

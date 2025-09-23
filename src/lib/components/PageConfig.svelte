@@ -35,7 +35,7 @@
 		>
 			<Download class="mr-3 h-5 w-5" />
 			<div class="text-left">
-				<div class="font-semibold">Export to PDF</div>
+				<div class="font-semibold">View to PDF</div>
 				<div class="text-sm opacity-90">Print or save as PDF</div>
 			</div>
 		</button>

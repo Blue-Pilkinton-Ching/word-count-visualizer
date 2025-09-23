@@ -20,7 +20,7 @@
 <div class="rounded-lg bg-white p-6 shadow-sm">
 	<button
 		onclick={() => (isExpanded = !isExpanded)}
-		class="mb-4 flex w-full items-center justify-between text-left text-lg font-semibold hover:text-gray-700"
+		class="flex w-full items-center justify-between text-left text-lg font-semibold hover:text-gray-700 {isExpanded ? 'mb-4' : ''}"
 	>
 		<div class="flex items-center">
 			<Type class="mr-2 h-5 w-5" />
