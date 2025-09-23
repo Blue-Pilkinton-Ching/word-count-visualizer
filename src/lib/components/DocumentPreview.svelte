@@ -4,7 +4,6 @@
 		fontFamily: string;
 		fontSize: number;
 		lineSpacing: number;
-		margins: number;
 	}>();
 </script>
 
@@ -27,7 +26,6 @@
 							font-family: '{fontFamily}', sans-serif;
 							font-size: {fontSize}pt;
 							line-height: {lineSpacing};
-							padding: {margins}in;
 							color: black;
 							background: white;
 						"
@@ -59,11 +57,7 @@
 			height: 100%;
 			background: white !important;
 			color: black !important;
-		}
-
-		@page {
-			margin: 0;
-			size: letter;
+			box-sizing: border-box;
 		}
 	}
 </style>

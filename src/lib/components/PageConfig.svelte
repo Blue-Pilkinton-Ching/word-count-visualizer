@@ -50,7 +50,7 @@
 			>
 				<Eye class="mr-4 ml-2 h-8 w-8" />
 				<div class="text-left">
-					<div class="font-medium">Preview document</div>
+					<div class="font-medium">Preview as document</div>
 				</div>
 			</button>
 
@@ -61,7 +61,7 @@
 			>
 				<Copy class="mr-4 ml-2 h-8 w-8 text-gray-600" />
 				<div class="text-left">
-					<div class="font-medium text-gray-900">Copy Text</div>
+					<div class="font-medium text-gray-900">Copy text</div>
 				</div>
 			</button>
 		</div>

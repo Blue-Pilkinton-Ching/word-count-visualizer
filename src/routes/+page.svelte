@@ -92,13 +92,20 @@
 			bind:paragraphLength
 		/>
 
-		<TypographyConfig bind:fontFamily bind:fontSize bind:lineSpacing bind:margins />
+		<TypographyConfig bind:fontFamily bind:fontSize bind:lineSpacing />
 
 		<PageConfig {displayText} />
 
-		<Statistics {displayText} {actualWordCount} {sentences} {paragraphs} {avgWordsPerSentence} {avgWordsPerParagraph} />
+		<Statistics
+			{displayText}
+			{actualWordCount}
+			{sentences}
+			{paragraphs}
+			{avgWordsPerSentence}
+			{avgWordsPerParagraph}
+		/>
 	</div>
 
 	<!-- Preview Area -->
-	<DocumentPreview {displayText} {fontFamily} {fontSize} {lineSpacing} {margins} />
+	<DocumentPreview {displayText} {fontFamily} {fontSize} {lineSpacing} />
 </div>

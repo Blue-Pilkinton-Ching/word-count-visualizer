@@ -29,7 +29,21 @@
 		{ value: 'fr', label: 'Français', placeholder: 'Tapez votre texte ici...' },
 		{ value: 'de', label: 'Deutsch', placeholder: 'Geben Sie hier Ihren Text ein...' },
 		{ value: 'it', label: 'Italiano', placeholder: 'Digita il tuo testo qui...' },
-		{ value: 'pt', label: 'Português', placeholder: 'Digite seu texto aqui...' }
+		{ value: 'pt', label: 'Português', placeholder: 'Digite seu texto aqui...' },
+		{ value: 'nl', label: 'Nederlands', placeholder: 'Typ hier je tekst...' },
+		{ value: 'ru', label: 'Русский', placeholder: 'Введите ваш текст здесь...' },
+		{ value: 'ja', label: '日本語', placeholder: 'ここにテキストを入力してください...' },
+		{ value: 'zh', label: '中文', placeholder: '在这里输入你的文字...' },
+		{ value: 'ko', label: '한국어', placeholder: '여기에 텍스트를 입력하세요...' },
+		{ value: 'ar', label: 'العربية', placeholder: 'اكتب النص هنا...' },
+		{ value: 'hi', label: 'हिन्दी', placeholder: 'यहाँ अपना टेक्स्ट लिखें...' },
+		{ value: 'sv', label: 'Svenska', placeholder: 'Skriv din text här...' },
+		{ value: 'no', label: 'Norsk', placeholder: 'Skriv teksten din her...' },
+		{ value: 'da', label: 'Dansk', placeholder: 'Skriv din tekst her...' },
+		{ value: 'pl', label: 'Polski', placeholder: 'Wpisz tutaj swój tekst...' },
+		{ value: 'tr', label: 'Türkçe', placeholder: 'Metninizi buraya yazın...' },
+		{ value: 'he', label: 'עברית', placeholder: 'הקלד כאן את הטקסט שלך...' },
+		{ value: 'fi', label: 'Suomi', placeholder: 'Kirjoita tekstisi tähän...' }
 	];
 
 	const currentLanguage = $derived(
