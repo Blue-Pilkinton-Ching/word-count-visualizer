@@ -10,28 +10,22 @@
 <div class="lg:col-span-8">
 	<div class="rounded-lg bg-white shadow-sm">
 		<div class="border-b p-4">
-			<h2 class="text-lg font-semibold">Document Preview</h2>
-			<p class="mt-1 text-sm text-gray-500">Letter size (8.5" × 11")</p>
+			<h2 class="p-2 text-lg font-semibold">Text view</h2>
 		</div>
-		<div class="p-2 sm:p-6">
+		<div class="p-6 sm:p-12">
 			<div class="overflow-x-auto">
 				<div
-					class="mx-auto bg-white shadow-lg"
-					style="width: 612px; min-height: 792px; max-width: 100%;"
-				>
-					<div
-						id="document-content"
-						class="prose max-w-none break-words"
-						style="
+					id="document-content"
+					class="prose max-w-none break-words"
+					style="
 							font-family: '{fontFamily}', sans-serif;
 							font-size: {fontSize}pt;
 							line-height: {lineSpacing};
 							color: black;
 							background: white;
 						"
-					>
-						<p class="whitespace-pre-wrap">{displayText}</p>
-					</div>
+				>
+					<p class="whitespace-pre-wrap">{displayText}</p>
 				</div>
 			</div>
 		</div>
