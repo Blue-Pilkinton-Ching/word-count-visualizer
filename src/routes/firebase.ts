@@ -1,6 +1,7 @@
 // Import the functions you need from the SDKs you need
 import { initializeApp } from 'firebase/app';
 import { getAnalytics } from 'firebase/analytics';
+import { getPerformance } from 'firebase/performance';
 // TODO: Add SDKs for Firebase products that you want to use
 // https://firebase.google.com/docs/web/setup#available-libraries
 
@@ -16,6 +17,7 @@ const firebaseConfig = {
 	measurementId: 'G-BEDS63TE48'
 };
 
-// Initialize Firebase
+// Initialize Firebase and its services
 const app = initializeApp(firebaseConfig);
 getAnalytics(app);
+getPerformance(app);
