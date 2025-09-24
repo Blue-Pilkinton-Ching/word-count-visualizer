@@ -2,11 +2,8 @@
 import { initializeApp } from 'firebase/app';
 import { getAnalytics } from 'firebase/analytics';
 import { getPerformance } from 'firebase/performance';
-// TODO: Add SDKs for Firebase products that you want to use
-// https://firebase.google.com/docs/web/setup#available-libraries
+import { browser } from '$app/environment';
 
-// Your web app's Firebase configuration
-// For Firebase JS SDK v7.20.0 and later, measurementId is optional
 const firebaseConfig = {
 	apiKey: 'AIzaSyC-vjiFNwNsP8d-tx-KzigMPvUSLt9EPks',
 	authDomain: 'see-word-count.firebaseapp.com',
@@ -19,5 +16,13 @@ const firebaseConfig = {
 
 // Initialize Firebase and its services
 const app = initializeApp(firebaseConfig);
-getAnalytics(app);
-getPerformance(app);
+
+let analytics: ReturnType<typeof getAnalytics> | null = null;
+let performance: ReturnType<typeof getPerformance> | null = null;
+
+if (browser) {
+	analytics = getAnalytics(app);
+	performance = getPerformance(app);
+}
+
+export { app, analytics, performance };
