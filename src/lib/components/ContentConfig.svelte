@@ -1,9 +1,9 @@
 <script lang="ts">
 	import { FileText, Globe, ChevronDown, ChevronUp, Settings } from 'lucide-svelte';
+	import { onMount } from 'svelte';
 
 	let {
 		useCustomText = $bindable(),
-		wordCountInput = $bindable(),
 		customText = $bindable(),
 		language = $bindable(),
 		includePunctuation = $bindable(),
@@ -11,7 +11,6 @@
 		paragraphLength = $bindable()
 	} = $props<{
 		useCustomText: boolean;
-		wordCountInput: number;
 		customText: string;
 		language: string;
 		includePunctuation: boolean;
@@ -20,7 +19,7 @@
 	}>();
 
 	let showAdvancedSettings = $state(false);
-	let isExpanded = $state(true);
+	let isExpanded = $state(false);
 
 	const languageOptions = [
 		{ value: 'lorem', label: 'Lorem Ipsum', placeholder: 'Type your text here...' },
@@ -90,24 +89,8 @@
 				</select>
 			</div>
 
-			<!-- Word Count Input -->
-			<div>
-				<label for="wordCount" class="mb-2 block text-sm font-medium text-gray-700">
-					Number of Words
-				</label>
-				<input
-					id="wordCount"
-					type="number"
-					bind:value={wordCountInput}
-					min="1"
-					max="10000"
-					class="h-11 w-full rounded-md border border-gray-300 px-3 py-2"
-					disabled={useCustomText}
-				/>
-			</div>
-
 			<!-- Advanced Settings -->
-			<div class="border-t pt-4">
+			<div class="pt-4">
 				<button
 					onclick={() => (showAdvancedSettings = !showAdvancedSettings)}
 					class="flex w-full items-center justify-between text-sm font-medium text-gray-700 hover:text-gray-900"

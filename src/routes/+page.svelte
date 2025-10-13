@@ -9,15 +9,16 @@
 	import PageConfig from '$lib/components/PageConfig.svelte';
 	import Statistics from '$lib/components/Statistics.svelte';
 	import DocumentPreview from '$lib/components/DocumentPreview.svelte';
+	import Words from '$lib/components/Words.svelte';
 
-	let wordCountInput = $state(500);
+	let wordCountInput: number | undefined = $state(undefined);
 	let customText = $state('');
 	let useCustomText = $state(false);
 	let fontSize = $state(12);
 	let fontFamily = $state('Arial');
 	let lineSpacing = $state(2.0);
 	let margins = $state(1);
-	let language = $state('lorem');
+	let language = $state('en');
 	let includePunctuation = $state(true);
 	let averageSentenceLength = $state(12);
 	let paragraphLength = $state(80);
@@ -31,7 +32,7 @@
 			averageSentenceLength,
 			paragraphLength
 		};
-		return generateSampleText(wordCountInput, language, options);
+		return generateSampleText(wordCountInput ?? 0, language, options);
 	}
 
 	$effect(() => {
@@ -88,27 +89,12 @@
 </svelte:head>
 
 <div class="grid gap-6 lg:grid-cols-12" itemscope itemtype="https://schema.org/WebApplication">
-	<script type="application/ld+json">
-		{
-			"@context": "https://schema.org",
-			"@type": "WebApplication",
-			"name": "Word Count Visualizer",
-			"description": "Instantly visualize how many pages your words will fill. Adjust fonts, spacing, and margins to see exactly how your document will look.",
-			"url": "https://wordcountvisualizer.com",
-			"applicationCategory": "UtilityApplication",
-			"operatingSystem": "Web Browser",
-			"offers": {
-				"@type": "Offer",
-				"price": "0",
-				"priceCurrency": "USD"
-			}
-		}
-	</script>
 	<!-- Controls Panel -->
 	<aside class="space-y-6 lg:col-span-4" aria-label="Document configuration controls">
+		<Words bind:wordCountInput bind:useCustomText />
+
 		<ContentConfig
 			bind:useCustomText
-			bind:wordCountInput
 			bind:customText
 			bind:language
 			bind:includePunctuation
@@ -117,8 +103,6 @@
 		/>
 
 		<TypographyConfig bind:fontFamily bind:fontSize bind:lineSpacing />
-
-		<PageConfig {displayText} />
 
 		<Statistics
 			{displayText}
