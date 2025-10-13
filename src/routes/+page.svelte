@@ -65,6 +65,7 @@
 		name="description"
 		content="Instantly visualize how many pages your words will fill. Adjust fonts, spacing, and margins to see exactly how your document will look. Free tool for students and professionals."
 	/>
+	<meta name="language" content="English" />
 	<meta
 		name="keywords"
 		content="word count, pages calculator, document length, essay length, word counter, page estimator, academic writing, professional writing"

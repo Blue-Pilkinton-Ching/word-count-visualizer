@@ -41,7 +41,7 @@
 			<div class="flex gap-2">
 				<button
 					onclick={copyText}
-					class="flex items-center rounded-lg border border-gray-500 px-4 py-2 transition-colors hover:bg-gray-700"
+					class="flex items-center rounded-lg border border-gray-500 px-4 py-2 transition-colors hover:bg-gray-200"
 				>
 					{#if copied}
 						<Check class="mr-2 h-5 w-5" />
