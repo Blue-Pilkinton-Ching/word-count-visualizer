@@ -1,5 +1,5 @@
 <script lang="ts">
-	import { FileText, Globe, ChevronDown, ChevronUp, Settings } from 'lucide-svelte';
+	import { Hash, Globe, ChevronDown, ChevronUp, Settings } from 'lucide-svelte';
 	import { onMount } from 'svelte';
 
 	let { useCustomText = $bindable(), wordCountInput = $bindable() } = $props<{
@@ -26,7 +26,7 @@
 		aria-controls="content-config-panel"
 	>
 		<div class="flex items-center">
-			<FileText class="mr-2 h-5 w-5" />
+			<Hash class="mr-2 h-5 w-5" />
 			Words
 		</div>
 		{#if isExpanded}

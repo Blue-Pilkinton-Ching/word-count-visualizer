@@ -1,7 +1,13 @@
 <script lang="ts">
-	import { Eye } from 'lucide-svelte';
+	import { Eye, Copy, Check } from 'lucide-svelte';
 
-	let { displayText, fontFamily, fontSize, lineSpacing, isRTL = false } = $props<{
+	let {
+		displayText,
+		fontFamily,
+		fontSize,
+		lineSpacing,
+		isRTL = false
+	} = $props<{
 		displayText: string;
 		fontFamily: string;
 		fontSize: number;
@@ -9,8 +15,22 @@
 		isRTL?: boolean;
 	}>();
 
+	let copied = $state(false);
+
 	function printDocument(): void {
 		window.print();
+	}
+
+	async function copyText(): Promise<void> {
+		try {
+			await navigator.clipboard.writeText(displayText);
+			copied = true;
+			setTimeout(() => {
+				copied = false;
+			}, 2000);
+		} catch (err) {
+			console.error('Failed to copy text:', err);
+		}
 	}
 </script>
 
@@ -18,13 +38,27 @@
 	<div class="rounded-lg bg-white shadow-sm">
 		<div class="flex items-center justify-between border-b p-4">
 			<h2 class="p-2 text-lg font-semibold">Text view</h2>
-			<button
-				onclick={printDocument}
-				class="flex items-center rounded-lg bg-blue-600 px-4 py-2 text-white transition-colors hover:bg-blue-700"
-			>
-				<Eye class="mr-2 h-5 w-5" />
-				View as pdf
-			</button>
+			<div class="flex gap-2">
+				<button
+					onclick={copyText}
+					class="flex items-center rounded-lg border border-gray-500 px-4 py-2 transition-colors hover:bg-gray-700"
+				>
+					{#if copied}
+						<Check class="mr-2 h-5 w-5" />
+						Copied!
+					{:else}
+						<Copy class="mr-2 h-5 w-5" />
+						Copy text
+					{/if}
+				</button>
+				<button
+					onclick={printDocument}
+					class="flex items-center rounded-lg bg-blue-600 px-4 py-2 text-white transition-colors hover:bg-blue-700"
+				>
+					<Eye class="mr-2 h-5 w-5" />
+					View as pdf
+				</button>
+			</div>
 		</div>
 		<div class="p-6 sm:p-12">
 			<div class="overflow-x-auto">
