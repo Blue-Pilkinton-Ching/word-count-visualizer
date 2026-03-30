@@ -10,3 +10,11 @@ input,
 button {
 	@apply cursor-pointer;
 }
+
+html {
+	@apply overflow-x-hidden;
+}
+
+.overlay-scrollbar {
+	@apply mr-[calc(-100vw+100%)];
+}

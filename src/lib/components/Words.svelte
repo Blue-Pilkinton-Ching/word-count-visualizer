@@ -1,5 +1,5 @@
 <script lang="ts">
-	import { Hash, Globe, ChevronDown, ChevronUp, Settings } from 'lucide-svelte';
+	import { Hash } from 'lucide-svelte';
 	import { onMount } from 'svelte';
 
 	let { useCustomText = $bindable(), wordCountInput = $bindable() } = $props<{

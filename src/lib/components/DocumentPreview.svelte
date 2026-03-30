@@ -1,5 +1,5 @@
 <script lang="ts">
-	import { Eye, Copy, Check } from 'lucide-svelte';
+	import { Eye, Copy, Check, Printer } from 'lucide-svelte';
 
 	let {
 		displayText,
@@ -35,32 +35,35 @@
 </script>
 
 <div class="lg:col-span-8">
-	<div class="rounded-lg bg-white shadow-sm">
-		<div class="flex items-center justify-between border-b p-4">
-			<h2 class="p-2 text-lg font-semibold">Text view</h2>
+	<div
+		class="flex flex-col gap-4 rounded-lg bg-white px-6 py-6 shadow-sm sm:gap-6 sm:px-12 sm:py-10"
+	>
+		<div class="flex items-center justify-between">
+			<h2 class="text-lg font-semibold">Text view</h2>
 			<div class="flex gap-2">
 				<button
+					class="flex items-center rounded-lg border-gray-500 px-2 py-2 transition-colors hover:bg-gray-200 sm:border sm:px-4"
 					onclick={copyText}
-					class="flex items-center rounded-lg border border-gray-500 px-4 py-2 transition-colors hover:bg-gray-200"
 				>
 					{#if copied}
-						<Check class="mr-2 h-5 w-5" />
-						Copied!
+						<Check class="h-5 w-5 sm:mr-2" />
+						<span class="hidden sm:inline">Copied!</span>
 					{:else}
-						<Copy class="mr-2 h-5 w-5" />
-						Copy text
+						<Copy class="h-5 w-5 sm:mr-2" />
+						<span class="hidden sm:inline">Copy text</span>
 					{/if}
 				</button>
 				<button
 					onclick={printDocument}
 					class="flex items-center rounded-lg bg-blue-600 px-4 py-2 text-white transition-colors hover:bg-blue-700"
 				>
-					<Eye class="mr-2 h-5 w-5" />
-					View as pdf
+					<Eye class="hidden h-5 w-5 sm:mr-2 sm:inline" />
+					<Printer class="inline h-5 w-5 sm:mr-2 sm:hidden" />
+					<span class="hidden sm:inline">View as pdf</span>
 				</button>
 			</div>
 		</div>
-		<div class="p-6 sm:p-12">
+		{#if displayText}
 			<div class="overflow-x-auto">
 				<div
 					id="document-content"
@@ -75,10 +78,12 @@
 							text-align: {isRTL ? 'right' : 'left'};
 						"
 				>
-					<p class="whitespace-pre-wrap">{displayText}</p>
+					<p class="whitespace-pre-wrap">
+						{displayText}
+					</p>
 				</div>
 			</div>
-		</div>
+		{/if}
 	</div>
 </div>
 

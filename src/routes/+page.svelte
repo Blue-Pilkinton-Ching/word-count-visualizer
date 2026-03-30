@@ -6,18 +6,16 @@
 	} from '$lib/utils/textGeneration';
 	import ContentConfig from '$lib/components/ContentConfig.svelte';
 	import TypographyConfig from '$lib/components/TypographyConfig.svelte';
-	import PageConfig from '$lib/components/PageConfig.svelte';
 	import Statistics from '$lib/components/Statistics.svelte';
 	import DocumentPreview from '$lib/components/DocumentPreview.svelte';
 	import Words from '$lib/components/Words.svelte';
 
-	let wordCountInput: number | undefined = $state(undefined);
+	let wordCountInput: number | undefined = $state(50);
 	let customText = $state('');
 	let useCustomText = $state(false);
 	let fontSize = $state(12);
 	let fontFamily = $state('Arial');
 	let lineSpacing = $state(2.0);
-	let margins = $state(1);
 	let language = $state('en');
 	let includePunctuation = $state(true);
 	let averageSentenceLength = $state(12);
