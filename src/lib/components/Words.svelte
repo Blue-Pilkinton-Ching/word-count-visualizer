@@ -16,7 +16,7 @@
 
 <div class="rounded-lg bg-white p-6 shadow-sm">
 	<div
-		class="mb-4 flex w-full items-center justify-between text-lg font-semibold hover:text-gray-700"
+		class="mb-4 flex w-full items-center justify-between text-lg font-semibold"
 		aria-controls="content-config-panel"
 	>
 		<div class="flex items-center">
@@ -24,9 +24,8 @@
 			Words
 		</div>
 	</div>
-
 	<div class="space-y-4" id="content-config-panel">
-		<div>
+		<form>
 			<label for="wordCount" class="mb-2 block text-sm font-medium text-gray-700">
 				Number of Words
 			</label>
@@ -41,6 +40,6 @@
 				class="h-11 w-full rounded-md border border-gray-300 px-3 py-2"
 				disabled={useCustomText}
 			/>
-		</div>
+		</form>
 	</div>
 </div>
