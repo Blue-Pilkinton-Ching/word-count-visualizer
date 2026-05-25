@@ -2,7 +2,7 @@
 import { initializeApp } from 'firebase/app';
 import { getAnalytics } from 'firebase/analytics';
 import { getPerformance } from 'firebase/performance';
-import { browser } from '$app/environment';
+import { browser, dev } from '$app/environment';
 
 const firebaseConfig = {
 	apiKey: 'AIzaSyC-vjiFNwNsP8d-tx-KzigMPvUSLt9EPks',
@@ -20,7 +20,7 @@ const app = initializeApp(firebaseConfig);
 let analytics: ReturnType<typeof getAnalytics> | null = null;
 let performance: ReturnType<typeof getPerformance> | null = null;
 
-if (browser) {
+if (browser && !dev) {
 	analytics = getAnalytics(app);
 	performance = getPerformance(app);
 }

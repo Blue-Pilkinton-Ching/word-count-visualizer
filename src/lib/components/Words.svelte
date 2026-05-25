@@ -1,6 +1,8 @@
 <script lang="ts">
+	import { MAX_WORD_COUNT, WORD_COUNT_EVENT_SUBMISSION_DELAY } from '$lib/config';
 	import { Hash } from 'lucide-svelte';
 	import { onMount } from 'svelte';
+	import { logWordCountEvent } from '$lib/utils/log-event';
 
 	let { useCustomText = $bindable(), wordCountInput = $bindable() } = $props<{
 		useCustomText: boolean;
@@ -11,6 +13,14 @@
 
 	onMount(() => {
 		inputElement?.focus();
+	});
+
+	$effect(() => {
+		const value = wordCountInput;
+		const timeout = setTimeout(() => {
+			logWordCountEvent(value);
+		}, WORD_COUNT_EVENT_SUBMISSION_DELAY);
+		return () => clearTimeout(timeout);
 	});
 </script>
 
@@ -33,10 +43,11 @@
 				bind:this={inputElement}
 				id="wordCount"
 				type="number"
-				bind:value={wordCountInput}
+				oninput={(e) => {
+					const val = e.currentTarget.valueAsNumber;
+					wordCountInput = isNaN(val) ? undefined : Math.min(val, MAX_WORD_COUNT);
+				}}
 				placeholder="Enter the number of words..."
-				min="1"
-				max="10000"
 				class="h-11 w-full rounded-md border border-gray-300 px-3 py-2"
 				disabled={useCustomText}
 			/>

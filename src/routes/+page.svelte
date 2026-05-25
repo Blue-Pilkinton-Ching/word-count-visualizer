@@ -3,7 +3,7 @@
 		generateSampleText,
 		countWords,
 		type TextGenerationOptions
-	} from '$lib/utils/textGeneration';
+	} from '$lib/utils/text-generation';
 	import ContentConfig from '$lib/components/ContentConfig.svelte';
 	import TypographyConfig from '$lib/components/TypographyConfig.svelte';
 	import Statistics from '$lib/components/Statistics.svelte';
