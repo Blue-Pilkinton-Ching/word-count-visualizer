@@ -11,7 +11,7 @@
 		lineSpacing: number;
 	}>();
 
-	const fontOptions = ['Arial', 'Times New Roman', 'Calibri', 'Georgia', 'Helvetica'];
+	const fontOptions = ['Arial', 'Times New Roman', 'Georgia', 'Verdana', 'Courier New'];
 	let isExpanded = $state(false);
 </script>
 
