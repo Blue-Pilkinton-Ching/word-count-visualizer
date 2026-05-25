@@ -18,6 +18,13 @@
 	}>();
 
 	let isExpanded = $state(false);
+
+	function formatFileSize(text: string): string {
+		const bytes = new TextEncoder().encode(text).length;
+		if (bytes < 1024) return `${bytes} B`;
+		if (bytes < 1024 * 1024) return `${(bytes / 1024).toFixed(1)} KB`;
+		return `${(bytes / (1024 * 1024)).toFixed(2)} MB`;
+	}
 </script>
 
 <div class="rounded-lg bg-white p-6 shadow-sm">
@@ -76,6 +83,10 @@
 				<div class="flex justify-between">
 					<span class="text-gray-700">Reading Time:</span>
 					<span class="font-medium text-gray-900">{Math.ceil(actualWordCount / 200)} min</span>
+				</div>
+				<div class="flex justify-between">
+					<span class="text-gray-700">Estimated file size:</span>
+					<span class="font-medium text-gray-900">{formatFileSize(displayText)}</span>
 				</div>
 			</div>
 		</div>
