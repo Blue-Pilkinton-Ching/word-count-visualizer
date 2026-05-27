@@ -18,12 +18,9 @@
 	import Words from '$lib/components/Words.svelte';
 	import { ArrowLeft } from 'lucide-svelte';
 
-	import { page } from '$app/state';
 	import Header from '$lib/components/Header.svelte';
 
-	let wordCountInput: number = $state(
-		wordCount ?? (Number(page.url.searchParams.get('words')) || 50)
-	);
+	let wordCountInput: number = $state(wordCount ?? 50);
 	let customText = $state('');
 	let useCustomText = $state(false);
 	let fontSize = $state(12);
