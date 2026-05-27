@@ -1,3 +1,7 @@
+<script lang="ts">
+	import Header from '$lib/components/Header.svelte';
+</script>
+
 <svelte:head>
 	<title>About - Word Count Visualizer</title>
 	<meta
@@ -21,7 +25,9 @@
 	<meta property="og:type" content="website" />
 </svelte:head>
 
-<div class="mx-auto max-w-2xl space-y-6">
+<Header title="Word Count Visualizer" />
+
+<div class="mx-auto max-w-2xl space-y-6 p-4">
 	<!-- About -->
 	<div class="rounded-lg bg-white p-6 shadow-sm">
 		<h2 class="mb-3 text-lg font-semibold">What is Word Count Visualizer?</h2>

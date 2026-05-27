@@ -19,6 +19,7 @@
 	import { ArrowLeft } from 'lucide-svelte';
 
 	import { page } from '$app/state';
+	import Header from '$lib/components/Header.svelte';
 
 	let wordCountInput: number = $state(
 		wordCount ?? (Number(page.url.searchParams.get('words')) || 50)
@@ -91,16 +92,7 @@
 	<link rel="canonical" href="https://wordcountvisualizer.com" />
 </svelte:head>
 
-<header class="overlay-scrollbar border-b border-gray-300 bg-white">
-	<div class="container mx-auto flex h-16 items-center justify-between px-4">
-		<div class="flex w-full items-center justify-between space-x-2">
-			<a href="/">
-				<h1 class="text-xl font-semibold text-gray-900">{title}</h1>
-			</a>
-			<a href="/about" class="text-sm hover:underline">About</a>
-		</div>
-	</div>
-</header>
+<Header {title} />
 <div class="overlay-scrollbar">
 	<main class="container mx-auto p-4">
 		<div class="grid gap-6 lg:grid-cols-12" itemscope itemtype="https://schema.org/WebApplication">
