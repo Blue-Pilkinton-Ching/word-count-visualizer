@@ -43,6 +43,7 @@
 				bind:this={inputElement}
 				id="wordCount"
 				type="number"
+				value={wordCountInput}
 				oninput={(e) => {
 					const val = e.currentTarget.valueAsNumber;
 					wordCountInput = isNaN(val) ? undefined : Math.min(val, MAX_WORD_COUNT);

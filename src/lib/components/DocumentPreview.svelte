@@ -6,13 +6,15 @@
 		fontFamily,
 		fontSize,
 		lineSpacing,
-		isRTL = false
+		isRTL = false,
+		previewTitle = 'Text Preview'
 	} = $props<{
 		displayText: string;
 		fontFamily: string;
 		fontSize: number;
 		lineSpacing: number;
 		isRTL?: boolean;
+		previewTitle?: string;
 	}>();
 
 	let copied = $state(false);
@@ -39,7 +41,7 @@
 		class="flex flex-col gap-4 rounded-lg bg-white px-6 py-6 shadow-sm sm:gap-6 sm:px-12 sm:py-10"
 	>
 		<div class="flex items-center justify-between">
-			<h2 class="text-xl font-semibold">Sample Text</h2>
+			<h2 class="text-xl font-semibold">{previewTitle}</h2>
 			<div class="flex gap-2">
 				<button
 					class="flex items-center rounded-lg border-gray-500 px-2 py-2 transition-colors hover:bg-gray-200 sm:border sm:px-4"
