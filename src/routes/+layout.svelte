@@ -5,9 +5,16 @@
 
 	const jsonLd = {
 		'@context': 'https://schema.org',
-		'@type': 'WebSite',
-		name: 'Word Count Visualizer Tool',
-		url: 'https://wordcountvisualizer.com'
+		'@type': 'WebApplication',
+		name: 'Word Count Visualizer',
+		url: 'https://wordcountvisualizer.com',
+		applicationCategory: 'UtilitiesApplication',
+		operatingSystem: 'All',
+		offers: {
+			'@type': 'Offer',
+			price: '0',
+			priceCurrency: 'USD'
+		}
 	};
 
 	let { children } = $props();

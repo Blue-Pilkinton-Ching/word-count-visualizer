@@ -92,7 +92,7 @@
 <Header {title} />
 <div class="overlay-scrollbar">
 	<main class="container mx-auto p-4">
-		<div class="grid gap-6 lg:grid-cols-12" itemscope itemtype="https://schema.org/WebApplication">
+		<div class="grid gap-6 lg:grid-cols-12">
 			<!-- Controls Panel -->
 			<aside class="space-y-6 lg:col-span-4" aria-label="Document configuration controls">
 				{#if wordCount}
